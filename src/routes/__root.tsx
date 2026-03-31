@@ -13,7 +13,7 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Link in Bio',
+        title: 'Andrey Explica Dev',
       },
     ],
   }),
