@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Press+Start+2P&display=swap');
+@import "tailwindcss" source("../");
+
+/* ============================================
+   CSS VARIABLES — Easy theme customization
+   ============================================ */
+:root {
+  --neon-blue: #00d4ff;
+  --neon-blue-dim: #0099bb;
+  --neon-blue-glow: rgba(0, 212, 255, 0.4);
+  --neon-red: #ff2d55;
+  --neon-red-glow: rgba(255, 45, 85, 0.4);
+  --bg-dark: #080d14;
+  --bg-card: #0d1520;
+  --bg-card-hover: #111e2e;
+  --border-color: #00d4ff;
+  --text-primary: #e0f4ff;
+  --text-secondary: #7ab8cc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Share Tech Mono', 'Courier New', monospace;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--neon-blue-dim); border-radius: 3px; }
+
+/* ============================================
+   NEON UTILITIES
+   ============================================ */
+.neon-border {
+  border: 1px solid var(--border-color);
+  box-shadow: 0 0 8px var(--neon-blue-glow), inset 0 0 8px rgba(0, 212, 255, 0.05);
+}
+
+.neon-text {
+  color: var(--neon-blue);
+  text-shadow: 0 0 10px var(--neon-blue-glow), 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+/* ============================================
+   PARTICLES
+   ============================================ */
+.particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--neon-blue);
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: float linear infinite;
+}
+
+@keyframes float {
+  0%   { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10%  { opacity: 0.4; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(-10px) translateX(20px); opacity: 0; }
+}
+
+/* ============================================
+   BLINKING CURSOR
+   ============================================ */
+.cursor::after {
+  content: '_';
+  animation: blink 1s step-end infinite;
+  color: var(--neon-blue);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ============================================
+   SCANLINES
+   ============================================ */
+.scanlines::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================
+   LINK-IN-BIO LAYOUT
+   ============================================ */
+.link-bio-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  position: relative;
+}
+
+/* ============================================
+   THEME TOGGLE
+   ============================================ */
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: var(--neon-blue);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px rgba(0, 212, 255, 0.2);
+}
+
+.theme-toggle:hover {
+  box-shadow: 0 0 14px var(--neon-blue-glow);
+  background: rgba(0, 212, 255, 0.1);
+}
+
+/* Light theme overrides */
+[data-theme="light"] {
+  --bg-dark: #e8edf5;
+  --bg-card: #f0f4fa;
+  --bg-card-hover: #dce3f0;
+  --text-primary: #0a1628;
+  --text-secondary: #3a6070;
+  --border-color: #0088aa;
+  --neon-blue: #0088aa;
+  --neon-blue-dim: #006688;
+  --neon-blue-glow: rgba(0, 136, 170, 0.35);
+  --neon-red: #cc1133;
+  --neon-red-glow: rgba(204, 17, 51, 0.35);
+}
+
+/* ============================================
+   PROFILE SECTION
+   ============================================ */
+.profile-section {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 212, 255, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.avatar-emoji {
+  font-size: 44px;
+  line-height: 1;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.username {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(14px, 3.5vw, 22px);
+  letter-spacing: 3px;
+  margin: 0 0 10px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ============================================
+   LINK BUTTONS
+   ============================================ */
+.links-section {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.link-button {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--neon-blue);
+  border-radius: 4px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px var(--neon-blue-glow), inset 0 0 8px rgba(0, 212, 255, 0.04);
+}
+
+.link-button:hover {
+  background: var(--bg-card-hover);
+  box-shadow:
+    0 0 18px var(--neon-blue-glow),
+    0 0 36px rgba(0, 212, 255, 0.12),
+    inset 0 0 14px rgba(0, 212, 255, 0.08);
+  transform: scale(1.03);
+}
+
+.link-button:active {
+  transform: scale(0.98);
+}
+
+.link-button__icon {
+  color: var(--neon-blue);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.link-button__label {
+  flex: 1;
+}
+
+/* Danger / red neon variant */
+.link-button--danger {
+  border-color: var(--neon-red);
+  box-shadow: 0 0 8px var(--neon-red-glow), inset 0 0 8px rgba(255, 45, 85, 0.04);
+}
+
+.link-button--danger .link-button__icon {
+  color: var(--neon-red);
+}
+
+.link-button--danger:hover {
+  box-shadow:
+    0 0 18px var(--neon-red-glow),
+    0 0 36px rgba(255, 45, 85, 0.12),
+    inset 0 0 14px rgba(255, 45, 85, 0.08);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.bio-footer {
+  margin-top: 32px;
+  color: rgba(0, 212, 255, 0.3);
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 480px) {
+  .link-bio-container {
+    padding: 32px 12px;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .avatar-emoji {
+    font-size: 36px;
+  }
+
+  .link-button {
+    padding: 14px 16px;
+    font-size: 13px;
+  }
+}
