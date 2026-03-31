@@ -15,8 +15,8 @@ import {
    CONFIGURATION — Edit your links here
    ============================================ */
 const PROFILE = {
-  avatar: '👤', // Replace with <img src="..."> for a real photo
-  username: 'CYBER_USER',
+  avatar: '/andrey.foto.site.png', // Replace with <img src="..."> for a real photo
+  username: 'ANDREY EXPLICA',
   subtitle: 'Select a link',
 }
 
@@ -30,32 +30,32 @@ interface LinkItem {
 const LINKS: LinkItem[] = [
   {
     icon: <Youtube size={20} />,
-    label: 'YouTube Channel',
+    label: 'YOUTUBE',
     href: 'https://youtube.com',
   },
   {
     icon: <Music2 size={20} />,
-    label: 'TikTok',
+    label: 'TIKTOK',
     href: 'https://tiktok.com',
   },
   {
     icon: <Instagram size={20} />,
-    label: 'Instagram',
+    label: 'INSTAGRAM',
     href: 'https://instagram.com',
   },
   {
     icon: <Download size={20} />,
-    label: 'Download Resources',
+    label: 'MODELO DE CURRICULO',
     href: '#',
   },
   {
     icon: <Sword size={20} />,
-    label: 'Battle Arena',
+    label: 'JORNADA ARCANA DEV',
     href: '#',
   },
   {
     icon: <Eye size={20} />,
-    label: 'Secret Access',
+    label: 'ANALISE DE PORTFOLIO',
     href: '#',
     variant: 'danger',
   },
