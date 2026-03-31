@@ -15,11 +15,10 @@ import {
    CONFIGURATION — Edit your links here
    ============================================ */
 const PROFILE = {
-  avatar: '/andrey.foto.site.png', // Replace with <img src="..."> for a real photo
+  avatar: <img src="/andrey.foto.site.png" alt="Andrey" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} />,
   username: 'ANDREY EXPLICA',
   subtitle: 'Select a link',
 }
-
 interface LinkItem {
   icon: React.ReactNode
   label: string
